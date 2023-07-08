@@ -42,7 +42,7 @@ export default function AudioPanel () {
                 <p className='text-lg'>Play music</p>
               </>
             )}
-            <audio ref={audioRef} src='/audio.mp3' />
+            <audio ref={audioRef} src='/audio.mp3' preload="none" />
           </div>
       </div>
     );
