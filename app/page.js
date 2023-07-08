@@ -19,7 +19,7 @@ export default async function Home() {
       <div className='w-full bg-[#c9b284] overflow-hidden'>
         <div className='flex'>
           <div className='img w-4/12 h-screen bg-red-500'>
-            <Image src={main_image} width={960} height={1280} className='w-full h-full object-cover' />
+            <Image src={main_image} width={960} height={1280} priority={true} className='w-full h-full object-cover' />
           </div>
           <div className='w-8/12 p-8 px-4 md:px-16 flex flex-col'>
             <div className="grow mb-6 flex flex-col 2xl:flex-row gap-y-5 md:gap-y-10 w-full">
@@ -39,7 +39,7 @@ export default async function Home() {
               </div>
               <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 xl:gap-x-16 gap-y-6'>
                 {small_pictures.map((picture_url) => {
-                  return <div className='aspect-square'><Image src={picture_url} width={960} height={1280} className='w-full h-full object-cover rounded-lg' /></div>
+                  return <div className='aspect-square'><Image src={picture_url} width={240} height={320} priority={true} className='w-full h-full object-cover rounded-lg' /></div>
                 })}
               </div>
             </div>
