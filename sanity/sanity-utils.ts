@@ -25,6 +25,34 @@ export async function getHomepageContent () {
     );
 }
 
+export async function getArticlesList () {
+    return clientFetch(
+        groq`*[_type == "article"]{
+            _id,
+            _createdAt,
+            title,
+            release_date,
+            "url_slug": url_slug.current
+        }`
+    );
+}
+
+export async function getArticleBySlug (article_slug) {
+    return clientFetch(
+        groq`*[_type == "article" && url_slug.current == $slug]{
+  ...,
+  content[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url
+    }
+  }
+}[0]`,
+        {slug: article_slug}
+    );
+}
+
 export async function getBlogs () {
     return clientFetch(
         groq`*[_type == "blog"]{

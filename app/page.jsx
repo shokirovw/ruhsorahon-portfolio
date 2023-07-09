@@ -1,14 +1,18 @@
 import Image from 'next/image'
 
-import { getBlogs, getHomepageContent } from '@/sanity/sanity-utils';
+import { getBlogs, getHomepageContent, getArticlesList } from '@/sanity/sanity-utils';
 import BlogSlider from '@/app/_lib/components/blog_slider';
 
 import AudioPanel from './_lib/components/audiopanel';
+
+import ArticlesList from './_lib/components/articleslist';
 
 export default async function Home() {
   const { main_image, small_texts, small_pictures, big_title } = await getHomepageContent();
 
   const blogs = await getBlogs();
+
+  const articleslist = await getArticlesList();
 
   let parsed_title = big_title.split(" ");
 
@@ -45,13 +49,18 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className='container w-full max-w-full min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto'>
-            <div className={`container max-w-6xl mx-auto`}>
-                <h1 className='text-7xl lg:text-8xl text-center'>Projects</h1>
-                <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste debitis odio tenetur eveniet architecto aperiam ipsam reiciendis, velit soluta, doloremque maiores reprehenderit eius nisi dolor perferendis quidem magnam autem. Ut.</p>
-                <div className="mt-10">
-                  <BlogSlider blogs={blogs} />
-                </div>
+        <div className={`container max-w-6xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
+            <h1 className='text-7xl lg:text-8xl text-center'>Projects</h1>
+            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste debitis odio tenetur eveniet architecto aperiam ipsam reiciendis, velit soluta, doloremque maiores reprehenderit eius nisi dolor perferendis quidem magnam autem. Ut.</p>
+            <div className="mt-10">
+              <BlogSlider blogs={blogs} />
+            </div>
+        </div>
+        <div className={`container max-w-4xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
+            <h1 className='text-7xl lg:text-8xl text-center'>Maqolalar</h1>
+            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste debitis odio tenetur eveniet architecto aperiam ipsam reiciendis, velit soluta, doloremque maiores reprehenderit eius nisi dolor perferendis quidem magnam autem. Ut.</p>
+            <div className="mt-10">
+              <ArticlesList articleslist={articleslist} />
             </div>
         </div>
         <div className="h-fit w-full px-10 flex items-center justify-center">
