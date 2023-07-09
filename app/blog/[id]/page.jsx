@@ -33,7 +33,7 @@ export default async function Article ({ params }) {
 		<div className='w-full bg-white'>
       		<div className='w-full bg-[#c9b284] overflow-hidden min-h-screen'>
       			<div className={`container max-w-4xl mx-auto min-h-[92vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
-		            <h1 className='text-6xl lg:text-8xl text-center'>{article_data.title}</h1>
+		            <h1 className='text-4xl lg:text-6xl text-center'>{article_data.title}</h1>
 		            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/70">{article_data.description}</p>
 		            <div className="flex flex-row justify-between mt-8 container max-w-xl mx-auto text-center font-serif text-lg text-black/80">
 		            	<div className="flex flex-row gap-x-2 items-center"><AiOutlineClockCircle /><p>02.08.2023</p></div>
