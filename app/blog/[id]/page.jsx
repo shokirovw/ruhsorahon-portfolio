@@ -10,6 +10,8 @@ import { BiUser } from 'react-icons/bi';
 
 import Image from "next/image";
 
+export const fetchCache = 'force-cache';
+
 function ImageComponent ({ url }) {
     return (
         <Image src={url} width={400} height={300} className='transition-all w-full h-full object-cover' style={{ objectPosition: "50% 50%" }}  />
