@@ -14,7 +14,7 @@ export const fetchCache = 'force-cache';
 
 function ImageComponent ({ url }) {
     return (
-        <Image src={url} width={400} height={300} className='transition-all w-full h-full object-cover' style={{ objectPosition: "50% 50%" }}  />
+        <Image src={url} width={400} height={300} className='transition-all w-full h-full object-cover rounded-xl' style={{ objectPosition: "50% 50%" }}  />
     );
 }
 
