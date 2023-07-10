@@ -2,6 +2,8 @@ import { createClient, groq } from "next-sanity";
 
 import { cache } from "react";
 
+import imageUrlBuilder from '@sanity/image-url'
+
 const client = createClient({
     projectId: "jbvmfa1g",
     dataset: "production",
@@ -10,6 +12,12 @@ const client = createClient({
 });
 
 const clientFetch = cache(client.fetch.bind(client))
+
+const builder = imageUrlBuilder(client)
+
+export function urlFor(source) {
+  return builder.image(source)
+}
 
 export async function getHomepageContent () {
     return clientFetch(
@@ -20,7 +28,10 @@ export async function getHomepageContent () {
             "main_image": main_image.asset->url,
             big_title,
             small_texts,
-            "small_pictures": small_pictures[].asset->url
+            "small_pictures": small_pictures[].asset->url,
+            blogs_subheading,
+            videos_subheading,
+            articles_subheading
         }[0]`
     );
 }
@@ -53,6 +64,12 @@ export async function getArticleBySlug (article_slug) {
     );
 }
 
+export async function getVideos () {
+    return clientFetch(
+        groq`*[_type == "video"]`
+    );
+}
+
 export async function getBlogs () {
     return clientFetch(
         groq`*[_type == "blog"]{
@@ -62,7 +79,7 @@ export async function getBlogs () {
             title,
             description,
             tags,
-            "images": images[].asset->url
+            images
         }`
     );
 }

@@ -1,18 +1,22 @@
 import Image from 'next/image'
 
-import { getBlogs, getHomepageContent, getArticlesList } from '@/sanity/sanity-utils';
+import { getBlogs, getHomepageContent, getArticlesList, getVideos } from '@/sanity/sanity-utils';
 import BlogSlider from '@/app/_lib/components/blog_slider';
 
 import AudioPanel from './_lib/components/audiopanel';
 
 import ArticlesList from './_lib/components/articleslist';
 
+import VideosGallery from './_lib/components/videosgallery';
+
 export default async function Home() {
-  const { main_image, small_texts, small_pictures, big_title } = await getHomepageContent();
+  const { main_image, small_texts, small_pictures, big_title, blogs_subheading, articles_subheading, videos_subheading } = await getHomepageContent();
 
   const blogs = await getBlogs();
 
   const articleslist = await getArticlesList();
+
+  const videos = await getVideos();
 
   let parsed_title = big_title.split(" ");
 
@@ -23,7 +27,7 @@ export default async function Home() {
       <div className='w-full bg-[#c9b284] overflow-hidden'>
         <div className='flex'>
           <div className='img w-4/12 h-screen bg-red-500'>
-            <Image src={main_image} width={960} height={1280} priority={true} className='w-full h-full object-cover' />
+            <Image src={main_image} alt={"Main image"} width={960} height={1280} priority={true} className='w-full h-full object-cover' />
           </div>
           <div className='w-8/12 p-8 px-4 md:px-16 flex flex-col'>
             <div className="grow mb-6 flex flex-col 2xl:flex-row gap-y-5 md:gap-y-10 w-full">
@@ -43,7 +47,7 @@ export default async function Home() {
               </div>
               <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 xl:gap-x-16 gap-y-6'>
                 {small_pictures.map((picture_url) => {
-                  return <div className='aspect-square'><Image src={picture_url} width={240} height={320} priority={true} className='w-full h-full object-cover rounded-lg' /></div>
+                  return <div className='aspect-square'><Image alt={"Feature Image"} src={picture_url} width={240} height={320} priority={true} className='w-full h-full object-cover rounded-lg' /></div>
                 })}
               </div>
             </div>
@@ -51,16 +55,23 @@ export default async function Home() {
         </div>
         <div className={`container max-w-6xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
             <h1 className='text-7xl lg:text-8xl text-center'>Projects</h1>
-            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste debitis odio tenetur eveniet architecto aperiam ipsam reiciendis, velit soluta, doloremque maiores reprehenderit eius nisi dolor perferendis quidem magnam autem. Ut.</p>
+            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">{blogs_subheading}</p>
             <div className="mt-10">
               <BlogSlider blogs={blogs} />
             </div>
         </div>
         <div className={`container max-w-4xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
             <h1 className='text-7xl lg:text-8xl text-center'>Maqolalar</h1>
-            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste debitis odio tenetur eveniet architecto aperiam ipsam reiciendis, velit soluta, doloremque maiores reprehenderit eius nisi dolor perferendis quidem magnam autem. Ut.</p>
+            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">{articles_subheading}</p>
             <div className="mt-10">
               <ArticlesList articleslist={articleslist} />
+            </div>
+        </div>
+        <div className={`container max-w-4xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
+            <h1 className='text-7xl lg:text-8xl text-center'>Raqs videolar</h1>
+            <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">{videos_subheading}</p>
+            <div className="mt-10">
+              <VideosGallery videos={videos} />
             </div>
         </div>
         <div className="h-fit w-full px-10 flex items-center justify-center">

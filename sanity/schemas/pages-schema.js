@@ -42,7 +42,22 @@ const project = {
                 }
             }],
             validation: Rule => Rule.length(5)
-        }
+        },
+        {
+            name: "blogs_subheading",
+            title: "Subheading for blogs",
+            type: 'string'
+        },
+        {
+            name: "articles_subheading",
+            title: "Subheading for Articles",
+            type: 'string'
+        },
+        {
+            name: "videos_subheading",
+            title: "Subheading for videos",
+            type: 'string'
+        },
     ]
 }
 
