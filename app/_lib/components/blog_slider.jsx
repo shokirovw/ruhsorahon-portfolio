@@ -52,7 +52,7 @@ export default function BlogSlider ({ blogs }) {
 
     return (
     <div className="w-full h-fit rounded-xl overflow-hidden ring-2 ring-orange-600">
-        <Splide ref={aaa} aria-label="My Favorite Images" options={{ drag: 'free', snap: true, height: (sliderprops == "horizontal" ? 600 : 800 ), speed: 800 }}>
+        <Splide ref={aaa} aria-label="My Favorite Images" options={{ drag: 'free', snap: true, height: (sliderprops == "horizontal" ? 380 : 550 ), speed: 800 }}>
             {blogs.map((blog_data, i) => <ASlide blog_data={blog_data} key={i} number={i + 1} sliderprops={sliderprops} perpage={perpage} />)}
         </Splide>
       </div>
