@@ -54,7 +54,7 @@ export default async function Home() {
           </div>
         </div>
         <div className={`container max-w-6xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
-            <h1 className='text-7xl lg:text-8xl text-center'>Projects</h1>
+            <h1 className='text-7xl lg:text-8xl text-center'>Blog</h1>
             <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">{blogs_subheading}</p>
             <div className="mt-10">
               <BlogSlider blogs={blogs} />
@@ -68,7 +68,7 @@ export default async function Home() {
             </div>
         </div>
         <div className={`container max-w-4xl mx-auto min-h-[83.6vh] pt-7 pb-16 px-8 md:pt-16 lg:px-16 mx-auto`}>
-            <h1 className='text-7xl lg:text-8xl text-center'>Raqs videolar</h1>
+            <h1 className='text-7xl lg:text-8xl text-center'>Raqs videolari</h1>
             <p className="text-content mt-8 container max-w-2xl mx-auto text-center font-serif text-lg text-black/80">{videos_subheading}</p>
             <div className="mt-10">
               <VideosGallery videos={videos} />
